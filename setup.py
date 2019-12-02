@@ -17,7 +17,7 @@ install_requires = [
 
 setup(
     name='sentry-discord',
-    version='0.1.0',
+    version='0.2.0',
     author='Josh Luongo',
     author_email='josh@jrapps.com.au',
     url='https://github.com/joshluongo/sentry-discord',
