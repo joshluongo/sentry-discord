@@ -22,7 +22,7 @@ setup(
     author_email='josh@jrapps.com.au',
     url='https://github.com/joshluongo/sentry-discord',
     description='A Sentry extension which posts notifications to Discord (https://www.discordapp.com/).',
-    long_description=open('README.rst').read(),
+    long_description=open('README.md').read(),
     license='Apache 2.0',
     package_dir={'': 'src'},
     packages=find_packages('src'),
