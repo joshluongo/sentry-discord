@@ -18,6 +18,13 @@ from sentry import http
 from sentry.plugins.bases import notify
 from sentry.utils import json
 
+LEVEL_TO_COLOR = {
+    "debug": "cfd3da",
+    "info": "2788ce",
+    "warning": "f18500",
+    "error": "f43f20",
+    "fatal": "d20f2a",
+}
 
 class DiscordOptionsForm(notify.NotificationConfigurationForm):
     webhook_url = forms.CharField(
@@ -54,6 +61,9 @@ class DiscordPlugin(notify.NotificationPlugin):
         return {
             'webhook_url': 'https://discordapp.com/api/webhooks/x/x',
         }
+
+    def color_for_event(self, event):
+        return "#" + LEVEL_TO_COLOR.get(event.get_tag("level"), "error")
 
     def notify(self, notification):
         event = notification.event
@@ -95,7 +105,7 @@ class DiscordPlugin(notify.NotificationPlugin):
                     "fallback": "[%s] %s" % (project_name, title),
                     "title": title,
                     "title_link": group.get_absolute_url(params={"referrer": "slack"}),
-                    "color": "#FF0000",
+                    "color": self.color_for_event(event),
                     "fields": fields,
                 }
             ]
