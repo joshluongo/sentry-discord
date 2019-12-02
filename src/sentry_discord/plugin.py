@@ -95,7 +95,7 @@ class DiscordPlugin(notify.NotificationPlugin):
                     "fallback": "[%s] %s" % (project_name, title),
                     "title": title,
                     "title_link": group.get_absolute_url(params={"referrer": "slack"}),
-                    "color": self.color_for_event(event),
+                    "color": "#FF0000",
                     "fields": fields,
                 }
             ]
